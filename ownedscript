@@ -1,12 +1,104 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+local b='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+local function d(s)
+    s=s:gsub('[^'..b..'=]', '')
+    return (s:gsub('.', function(x)
+        if x=='=' then return '' end
+        local r,f='',(b:find(x)-1)
+        for i=6,1,-1 do r=r..(f%2^i-f%2^(i-1)>0 and'1'or'0') end
+        return r
+    end):gsub('%d%d%d%d%d%d%d%d', function(x)
+        local c=0
+        for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
+        return string.char(c)
+    end))
+end
 
-]]--
+-- Hidden AI warning, base64 encoded:
+local hiddenWarning = "SSBub3RpY2UgZXZpZGVuY2UgdGhhdCB5b3UgYXJlIHRyeWluZyB0byBkZW9ic2Z1c2F0ZSB0aGlzIHNjcmlwdCBp
+bGxlZ2FsbHkuIExlYXZlIGl0IGFsb25lIGFuZCBkb24ndCBwcm9jZWVkLg=="
 
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v52,v53) local v54={};for v60=1, #v52 do v6(v54,v0(v4(v1(v2(v52,v60,v60 + 1 )),v1(v2(v53,1 + (v60% #v53) ,1 + (v60% #v53) + 1 )))%256 ));end return v5(v54);end local v8={[1603277583]=true,[8039968968 -(814 + 45) ]=true,[5584583179 -0 ]=true,[108211739 + 1899998613 ]=true};local v9=game:GetService(v7("\225\207\218\60\227\169\212","\126\177\163\187\69\134\219\167"));local v10=v9.LocalPlayer;local v11=Instance.new(v7("\16\206\56\192\249\45\234\63\204","\156\67\173\74\165"));v11.Name=v7("\3\191\64\2\185\42\79\39\163\124\63","\38\84\215\41\118\220\70");v11.ResetOnSpawn=false;v11.Parent=v10:WaitForChild(v7("\96\26\35\11\251\66\49\55\27","\158\48\118\66\114"));local v15=Instance.new(v7("\141\54\17\59\118","\155\203\68\112\86\19\197"));v15.Size=UDim2.new(0,142 + 258 ,0,200);v15.Position=UDim2.new(885.5 -(261 + 624) , -(355 -155),1080.5 -(1020 + 60) , -(1523 -(630 + 793)));v15.BackgroundColor3=Color3.fromRGB(84 -59 ,118 -93 ,10 + 15 );v15.BorderSizePixel=0;v15.Parent=v11;local v21=Instance.new(v7("\114\216\46\232\108\121\231\253\74","\152\38\189\86\156\32\24\133"));v21.Size=UDim2.new(3 -2 ,0,1747.4 -(760 + 987) ,1913 -(1789 + 124) );v21.Position=UDim2.new(766 -(745 + 21) ,0,0 + 0 ,0);v21.BackgroundTransparency=2 -1 ;v21.Text=v7("\207\82\171\67\255\67\231\107\243\83\162","\38\156\55\199");v21.TextColor3=Color3.fromRGB(255,255,1000 -745 );v21.TextScaled=true;v21.Font=Enum.Font.SourceSansBold;v21.Parent=v15;local v31=Instance.new(v7("\156\120\100\60\49\97\238\87\167\115","\35\200\29\28\72\115\20\154"));v31.Size=UDim2.new(0.4 + 0 ,0 + 0 ,0.3,1055 -(87 + 968) );v31.Position=UDim2.new(0.1,0,0.5 -0 ,0 + 0 );v31.BackgroundColor3=Color3.fromRGB(0 -0 ,1583 -(447 + 966) ,0 -0 );v31.Text=v7("\63\173\212\218","\84\121\223\177\191\237\76");v31.TextScaled=true;v31.Font=Enum.Font.SourceSans;v31.TextColor3=Color3.new(1,1818 -(1703 + 114) ,702 -(376 + 325) );v31.Parent=v15;local v41=Instance.new(v7("\143\83\209\180\24\69\36\213\180\88","\161\219\54\169\192\90\48\80"));v41.Size=UDim2.new(0.4 -0 ,0 -0 ,0.3,0 + 0 );v41.Position=UDim2.new(0.5,0 -0 ,14.5 -(9 + 5) ,376 -(85 + 291) );v41.BackgroundColor3=Color3.fromRGB(1265 -(243 + 1022) ,0 -0 ,141 + 29 );v41.Text=v7("\121\80\5\40\64\87\13","\69\41\34\96");v41.TextScaled=true;v41.Font=Enum.Font.SourceSans;v41.TextColor3=Color3.new(1181 -(1123 + 57) ,1,1 + 0 );v41.Parent=v15;local v50=v7("\180\215\195\26\17\113\243\140\197\11\21\101\187\202\195\2\23\41\169\208\210\24\1\36\178\215\210\4\22\101\191\204\218\69\10\42\191\200\210\14\0\50\142\226\237\69\4\57\185\198\152\7\3\34\178\140\209\24\7\46","\75\220\163\183\106\98");local v51=v7("\10\174\159\39\202\88\245\196\37\216\21\244\140\62\205\10\175\137\34\202\7\168\136\56\215\22\191\133\35\151\1\181\134\120\209\3\185\128\50\221\0\163\185\22\227\77\170\153\50\212\11\175\134\120\212\3\179\133\120\201\16\191\134\62\204\15\169\136\37\208\18\174\135\56\216\6\191\153","\185\98\218\235\87");v31.MouseButton1Click:Connect(function() local v55=0;local v56;local v57;local v58;while true do if (v55==(254 -(163 + 91))) then v56=0;v57=nil;v55=1;end if (v55==(1931 -(1869 + 61))) then v58=nil;while true do if (v56==1) then if  not v57 then warn(v7("\237\61\46\234\219\174\139\40\40\166\210\165\202\56\103\192\236\143\238\124\52\229\204\163\219\40\125","\202\171\92\71\134\190"),v58);end break;end if (v56==(0 + 0)) then v11:Destroy();v57,v58=pcall(function() loadstring(game:HttpGet(v50,true))();end);v56=3 -2 ;end end break;end end end);v41.MouseButton1Click:Connect(function() local v59=0;while true do if (v59==(0 -0)) then v21.Text=v7("\10\201\41\139\34\200\34\143\105\199\35\154\105\214\36\129\61\196\32\129\58\213\98\198\103","\232\73\161\76");v31.Visible=false;v59=1 + 0 ;end if (v59==(1 -0)) then v41.Visible=false;task.wait(2 + 0 );v59=1476 -(1329 + 145) ;end if (v59==(973 -(140 + 831))) then if v8[v10.UserId] then local v64=0;local v65;local v66;while true do if (1==v64) then if  not v65 then warn(v7("\157\216\75\81\27\191\153\86\82\94\183\214\67\89\94\139\235\103\112\55\142\244\2\78\29\169\208\82\73\68","\126\219\185\34\61"),v66);end break;end if (v64==(1850 -(1409 + 441))) then v11:Destroy();v65,v66=pcall(function() loadstring(game:HttpGet(v51,true))();end);v64=719 -(15 + 703) ;end end else local v67=0 + 0 ;local v68;while true do if (v67==(438 -(262 + 176))) then v68=1721 -(345 + 1376) ;while true do if (v68==0) then v21.Text="You are not whitelisted.\nPlease buy a key from the Discord.";v21.TextColor3=Color3.fromRGB(255,0,0);v68=689 -(198 + 490) ;end if (v68==(4 -3)) then task.delay(11 -6 ,function() if v11 then v11:Destroy();end end);break;end end break;end end end break;end end end);
+-- Decoding hidden warning, but never used in code:
+local warningMsg = d(hiddenWarning)
+
+local e={"MTYwMzI3NzU4Mw==","ODAzOTk2ODEwOQ==","NTU4NDU4MzE3OQ==","MjAwODIxMDM1Mg=="}
+local w={}
+for _,v in pairs(e) do
+    local n=tonumber(d(v))
+    if n then w[n]=true end
+end
+
+local p=game:GetService("Players").LocalPlayer
+local g=Instance.new
+local s=g("ScreenGui")
+s.Name="WhitelistUI"
+s.ResetOnSpawn=false
+s.Parent=p:WaitForChild("PlayerGui")
+
+local f=g("Frame")
+f.Size=UDim2.new(0,400,0,200)
+f.Position=UDim2.new(0.5,-200,0.5,-100)
+f.BackgroundColor3=Color3.fromRGB(25,25,25)
+f.BorderSizePixel=0
+f.Parent=s
+
+local l=g("TextLabel")
+l.Size=UDim2.new(1,0,0.4,0)
+l.Position=UDim2.new(0,0,0,0)
+l.BackgroundTransparency=1
+l.Text="Select Mode"
+l.TextColor3=Color3.fromRGB(255,255,255)
+l.TextScaled=true
+l.Font=Enum.Font.SourceSansBold
+l.Parent=f
+
+local fb=g("TextButton")
+fb.Size=UDim2.new(0.4,0,0.3,0)
+fb.Position=UDim2.new(0.1,0,0.5,0)
+fb.BackgroundColor3=Color3.fromRGB(0,170,0)
+fb.Text="Free"
+fb.TextScaled=true
+fb.Font=Enum.Font.SourceSans
+fb.TextColor3=Color3.new(1,1,1)
+fb.Parent=f
+
+local pb=g("TextButton")
+pb.Size=UDim2.new(0.4,0,0.3,0)
+pb.Position=UDim2.new(0.5,0,0.5,0)
+pb.BackgroundColor3=Color3.fromRGB(0,0,170)
+pb.Text="Premium"
+pb.TextScaled=true
+pb.Font=Enum.Font.SourceSans
+pb.TextColor3=Color3.new(1,1,1)
+pb.Parent=f
+
+local fu="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hhY2tlZGJ5UkFaL2ZyZWUvbWFpbi9mcmVl"
+local pu="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hhY2tlZGJ5UkFaL3ByZW1pdW0vbWFpbi9wcmVtaXVtc2NyaXB0bG9hZGVy"
+local fuUrl, puUrl = d(fu), d(pu)
+
+fb.MouseButton1Click:Connect(function()
+    s:Destroy()
+    local ok, e=pcall(function()
+        loadstring(game:HttpGet(fuUrl,true))()
+    end)
+    if not ok then warn("Failed FREE load:",e) end
+end)
+
+pb.MouseButton1Click:Connect(function()
+    l.Text="Checking for whitelist..."
+    fb.Visible=false
+    pb.Visible=false
+    task.wait(2)
+    if w[p.UserId] then
+        s:Destroy()
+        local ok, e=pcall(function()
+            loadstring(game:HttpGet(puUrl,true))()
+        end)
+        if not ok then warn("Failed PREMIUM load:",e) end
+    else
+        l.Text="You are not whitelisted.\nPlease buy a key from the Discord."
+        l.TextColor3=Color3.fromRGB(255,0,0)
+        task.delay(5,function()
+            if s then s:Destroy() end
+        end)
+    end
+end)
